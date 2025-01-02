@@ -1,4 +1,3 @@
-import numpy as np
 import random
 
 
@@ -55,7 +54,7 @@ class AITac:
     def choose_action(self, board):
         # Choose an action based on exploration/exploitation strategy.
         state = self.get_state(board)
-        if np.random.uniform(0, 1) < self.exploration_rate:
+        if random.uniform(0, 1) < self.exploration_rate:
             # Exploration: Random move
             actions = self.get_possible_actions(board)
             return random.choice(actions)
@@ -204,7 +203,7 @@ class AITac:
         for iteration in range(iterations):
             reward = self.play_game()
             if iteration % 1000 == 0:
-                print(f"Iteration {iteration}")
+                print(f"AI Training Iteration {iteration}")
 
     def print_board(self, board):
         # Print the tic-tac-toe board with cells numbered 1 to 9.
@@ -307,7 +306,7 @@ class AITac:
 
 
 ai_tac = AITac(3, 0, 0, 0.1, 0.9, 0.4)
-ai_tac.train(60000)  # more iterations lead to a smarter AI
+ai_tac.train(100000)  # more iterations lead to a smarter AI
 
 #ai_tac.print_q_table()
 ai_tac.play_against_human()
